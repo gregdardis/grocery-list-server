@@ -20,7 +20,7 @@ class GroceryItemsController < ApplicationController
       render json: @grocery_item, status: :created, location: @grocery_item
     else
       render json: {
-        :errors => @grocery_item.errors.full_messages
+        errors: @grocery_item.errors.full_messages
       },
       status: 422 #unprocessable entity
     end
@@ -43,7 +43,7 @@ class GroceryItemsController < ApplicationController
       render json: @grocery_item
     else
       render json: {
-         :errors => @grocery_item.errors.full_messages
+          errors: @grocery_item.errors.full_messages
         },
         status: 404
     end
@@ -57,9 +57,9 @@ class GroceryItemsController < ApplicationController
       render status: :ok # 200
     else
       render json: {
-        :errors => @grocery_item.errors.full_messages
-       },
-       status: 404
+          errors: @grocery_item.errors.full_messages
+        },
+        status: 404
     end
   end
 
