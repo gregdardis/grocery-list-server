@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grocery_list_id: 1
+  name: MyString
+  crossed_off: false
+
+two:
+  grocery_list_id: 1
+  name: MyString
+  crossed_off: false

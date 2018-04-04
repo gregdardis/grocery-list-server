@@ -51,12 +51,14 @@ class GroceryListsController < ApplicationController
 
   private
   def grocery_list_params
-    params.require(:grocery_list).permit(:title,
-                                          :owner,
-                                          :last_modified_by,
-                                          :created_at,
-                                          :last_modified,
-                                          :updated_at
-                                        )
+    params.require(:grocery_list)
+      .permit(
+        :title,
+        :owner,
+        :last_modified_by,
+        :created_at,
+        :last_modified,
+        :updated_at
+      )
   end
 end

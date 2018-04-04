@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403230813) do
+ActiveRecord::Schema.define(version: 20180404195149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "grocery_items", force: :cascade do |t|
+    t.bigint "grocery_list_id"
+    t.string "name"
+    t.boolean "crossed_off"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grocery_list_id"], name: "index_grocery_items_on_grocery_list_id"
+  end
 
   create_table "grocery_lists", force: :cascade do |t|
     t.string "title"
@@ -24,4 +33,5 @@ ActiveRecord::Schema.define(version: 20180403230813) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "grocery_items", "grocery_lists"
 end
