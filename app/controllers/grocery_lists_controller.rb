@@ -33,11 +33,20 @@ class GroceryListsController < ApplicationController
   # (PATCH) update specific grocery list by id
   # PATH: /grocery_lists/:id
   def update
+    @grocery_list = GroceryList.find(params[:id])
+
+    if @grocery_list.update(grocery_list_params)
+      render json: @grocery_list
+    else
+      render json: @grocery_list.errors
+    end
   end
 
   # (DELETE) delete specific grocery list by id
   # PATH: /grocery_lists/:id
   def destroy
+    @grocery_list = GroceryList.find(params[:id])
+    @grocery_list.destroy
   end
 
   private
