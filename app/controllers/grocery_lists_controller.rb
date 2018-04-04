@@ -4,7 +4,7 @@ class GroceryListsController < ApplicationController
   # PATH: /grocery_lists
   def index
     @grocery_lists = GroceryList.all
-
+    # status :ok = 200
     render status: :ok, json: @grocery_lists
   end
 
@@ -19,7 +19,10 @@ class GroceryListsController < ApplicationController
     if @grocery_list.save
       render json: @grocery_list, status: :created, location: @grocery_list
     else
-      render json: @grocery_list.errors, status: :unprocessable_entity
+      render json:{
+          errors: @grocery_list.errors.full_messages
+        },
+        status: 422 # unprocessable entity
     end
   end
 
@@ -38,7 +41,10 @@ class GroceryListsController < ApplicationController
     if @grocery_list.update(grocery_list_params)
       render json: @grocery_list
     else
-      render json: @grocery_list.errors
+      render json: {
+          errors: @grocery_list.errors.full_messages
+        },
+        status: 404
     end
   end
 
@@ -46,7 +52,14 @@ class GroceryListsController < ApplicationController
   # PATH: /grocery_lists/:id
   def destroy
     @grocery_list = GroceryList.find(params[:id])
-    @grocery_list.destroy
+    if @grocery_list.destroy
+      render status: :ok # 200
+    else
+      render json: {
+          errors: @grocery_list.errors.full_messages
+        },
+        status: 404
+    end
   end
 
   private
