@@ -26,6 +26,8 @@ class GroceryListsController < ApplicationController
   # (GET) get specific grocery list by id
   # PATH: /grocery_lists/:id
   def show
+    @grocery_list = GroceryList.find(params[:id])
+    render json: @grocery_list
   end
 
   # (PATCH) update specific grocery list by id
