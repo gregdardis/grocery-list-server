@@ -3,7 +3,8 @@ class GroceryItemsController < ApplicationController
   # (GET) get all grocery items for a list
   # PATH: /grocery_lists/:grocery_list_id/grocery_items
   def index
-    @grocery_items = GroceryItem.all
+    @grocery_items = GroceryList.find(params[:grocery_list_id]).grocery_items
+
     # status :ok = 200
     render status: :ok, json: @grocery_items
   end
