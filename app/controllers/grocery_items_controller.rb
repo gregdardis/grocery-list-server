@@ -78,9 +78,7 @@ class GroceryItemsController < ApplicationController
     params.require(:grocery_item)
       .permit(
         :name,
-        :crossed_off,
-        :created_at,
-        :updated_at
+        :crossed_off
       )
   end
 end

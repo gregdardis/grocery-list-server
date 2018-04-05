@@ -68,10 +68,7 @@ class GroceryListsController < ApplicationController
       .permit(
         :title,
         :owner,
-        :last_modified_by,
-        :created_at,
-        :last_modified,
-        :updated_at
+        :last_modified_by
       )
   end
 end

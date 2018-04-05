@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20180404195149) do
     t.string "owner"
     t.string "last_modified_by"
     t.datetime "created_at", null: false
-    t.datetime "last_modified"
     t.datetime "updated_at", null: false
   end
 

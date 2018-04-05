@@ -6,7 +6,6 @@ class CreateGroceryLists < ActiveRecord::Migration[5.1]
       t.string :owner
       t.string :last_modified_by
       t.timestamp :created_at
-      t.timestamp :last_modified
 
       t.timestamps
     end
