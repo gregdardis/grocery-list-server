@@ -33,7 +33,10 @@ class GroceryItemsController < ApplicationController
   # (GET) get specific grocery item on a grocery list
   # PATH: /grocery_lists/:grocery_list_id/grocery_items/:id
   def show
-    @grocery_item = GroceryItem.find(params[:id])
+    @grocery_item = GroceryItem.where(
+      grocery_list_id: params[:grocery_list_id],
+      id: params[:id]
+    )
 
     render json: @grocery_item
   end
