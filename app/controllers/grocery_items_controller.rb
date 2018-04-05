@@ -15,9 +15,12 @@ class GroceryItemsController < ApplicationController
     # mapped to the respective database columns
     @grocery_item = GroceryItem.new(grocery_item_params)
 
+    @grocery_list_id = params[:grocery_list_id]
+    @grocery_item.grocery_list_id = @grocery_list_id
+
     # saves the model in the database
     if @grocery_item.save
-      render json: @grocery_item, status: :created, location: @grocery_item
+      render json: @grocery_item, status: :created
     else
       render json: {
         errors: @grocery_item.errors.full_messages
@@ -37,7 +40,7 @@ class GroceryItemsController < ApplicationController
   # (PATCH) update specific grocery item by id
   # PATH: /grocery_lists/:grocery_list_id/grocery_items/:id
   def update
-    @grocery_item= GroceryItem.find(params[:id])
+    @grocery_item = GroceryItem.find(params[:id])
 
     if @grocery_item.update(grocery_item_params)
       render json: @grocery_item
@@ -67,7 +70,6 @@ class GroceryItemsController < ApplicationController
   def grocery_item_params
     params.require(:grocery_item)
       .permit(
-        :grocery_list_id,
         :name,
         :crossed_off,
         :created_at,

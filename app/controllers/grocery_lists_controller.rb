@@ -17,7 +17,7 @@ class GroceryListsController < ApplicationController
 
     # saves the model in the database
     if @grocery_list.save
-      render json: @grocery_list, status: :created, location: @grocery_list
+      render json: @grocery_list, status: :created
     else
       render json:{
           errors: @grocery_list.errors.full_messages
