@@ -1,3 +1,3 @@
 class GroceryList < ApplicationRecord
-  has_many :grocery_items
+  has_many :grocery_items, dependent: :destroy
 end

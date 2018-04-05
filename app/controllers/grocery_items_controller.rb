@@ -62,7 +62,11 @@ class GroceryItemsController < ApplicationController
   # (DELETE) delete specific grocery item by id
   # PATH: /grocery_lists/:grocery_list_id/grocery_items/:id
   def destroy
-    @grocery_item = GroceryItem.find(params[:id])
+    @grocery_item = GroceryItem.where(
+      grocery_list_id: params[:grocery_list_id],
+      id: params[:id]
+  )
+
     if @grocery_item.destroy
       render status: :ok # 200
     else
