@@ -44,7 +44,10 @@ class GroceryItemsController < ApplicationController
   # (PATCH) update specific grocery item by id
   # PATH: /grocery_lists/:grocery_list_id/grocery_items/:id
   def update
-    @grocery_item = GroceryItem.find(params[:id])
+    @grocery_item = GroceryItem.where(
+      grocery_list_id: params[:grocery_list_id],
+      id: params[:id]
+    )
 
     if @grocery_item.update(grocery_item_params)
       render json: @grocery_item
